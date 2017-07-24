@@ -1,0 +1,15 @@
+
+.idea/inspectionProfiles/
+.idea/modules.xml
+.idea/template-base-landing-page.iml
+.idea/workspace.xml
+.idea/vcs.xml
+.idea/
+
+# minify Folder
+dist/css/
+dist/js
+
+
+#ignore node packages
+node_modules/
