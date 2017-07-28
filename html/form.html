@@ -1,4 +1,83 @@
 
-<form action="">
+<section class="contact-urbia">
+    <div class="">
+        <h3>Formulario de contacto</h3>
+        <form id="gform"
+              class="form"
+              name="contact"
+              method="POST"
+              action="https://script.google.com/macros/s/AKfycbz4qkiVeJWvJsR8XR0ZppStjxwgz_Gbr9OhtXHRFEBmmdWPV3jr/exec">
 
-</form>
+            <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text"
+                       name="nombre"
+                       id="nombre"
+                       class="form-control"
+                       placeholder="Tu nombre"
+                       maxlength="60" required>
+                <span class="return-name-quote"></span>
+            </div>
+
+
+            <div class="form-group">
+                <i></i>
+                <label for="email">Email: </label>
+                <input type="email"
+                       name="email"
+                       id="email"
+                       class="form-control"
+                       placeholder="Tu correo electrónico"
+                       pattern="^\S+@(([a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,6})$"
+                       title="El fomrmato de email no es correcto"
+                       required>
+                <span></span>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Nº móvil: </label>
+                <!--acepta sólo  números que comiencen por 9, 8, 6 o 7 seguido de 8 dígitos. ES- format-->
+                <input type="text"
+                       name="telefono"
+                       id="phone"
+                       class="form-control"
+                       placeholder="Tu teléfono"
+                       pattern="^[9|8|7|6]\d{8}$"
+                       title="Acepta sólo  números que comiencen por 9, 8, 6 o 7"
+                       maxlength="9" required>
+            </div>
+            <div class="form-group">
+                <label for="subject" class="asunto">Asunto del mensaje</label>
+                <input type="text"
+                       name="asunto"
+                       id="subject"
+                       class="form-control"
+                       placeholder="Asunto del menjaje"
+                       maxlength="150" required>
+            </div>
+
+            <div class="form-group">
+                <i></i>
+                <label for="word_count">Escribe algo: </label><br>
+                <textarea name="mensaje"
+                          id="word_count"
+                          class="form-control"
+                          cols="30" rows="10"
+                          placeholder="Tu mensaje" required></textarea>
+                <br>
+            </div>
+
+            <div class="">
+                <button id="submit"
+                        class="btn-primary"
+                        type="submit"> ENVIAR </button>
+                <i></i>
+            </div>
+        </form>
+    </div>
+    <div style="display: none" id="thankyou_message">
+        <h2> <em>Gracias! :)</em>
+            En breve nos pondremos en contanto desde URBIA services.
+        </h2>
+    </div>
+</section>
