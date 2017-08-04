@@ -22,3 +22,6 @@
   ```
   gulp
   ```
+  
+  Use: 
+  [Send Email from a Static HTML Form using Google Apps Mail!](https://github.com/dwyl/html-form-send-email-via-google-script-without-server)
