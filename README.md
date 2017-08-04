@@ -3,7 +3,7 @@
 
 # Instruciones:
 
-1. **Paso 1** Clonar el repo e isntalar los modulos necesarios:
+1. **Paso 1** Clonar el repo e instalar los modulos necesarios:
   ```
   npm install
   ```
