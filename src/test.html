@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="dist/css/style.css">
+    <link rel="stylesheet" type="text/css" href="dist/css/msc-style.css">
+</head>
+<body>
+<h1>Hello friend ;)</h1>
+
+<div style="background-color:white;margin:25px 10px 0px 10px;padding:5px 20px 20px 20px;box-sizing:border-box;text-align:left">
+    <h3 style="font-family:arial,verdana">Your booking for Toni's Bar (Demo) has been <strong>CANCELLED</strong></h3>
+
+    <table>
+        <tbody>
+        <tr>
+            <td style="font-family:arial,verdana;font-weight:bold">Date:
+            </td><td>
+        </td><td style="font-family:arial,verdana">viernes 29 septiembre 2017, 14:30
+        </td><td>
+        </td></tr>
+        <tr>
+            <td style="font-family:arial,verdana;font-weight:bold">People:
+            </td><td>
+        </td><td style="font-family:arial,verdana">8
+        </td><td>
+        </td></tr>
+        <tr>
+            <td style="font-family:arial,verdana;font-weight:bold">Name:
+            </td><td>
+        </td><td style="font-family:arial,verdana">Richard  Cacuango
+        </td><td>
+        </td></tr>
+        <tr>
+            <td style="font-family:arial,verdana;font-weight:bold">Email:
+            </td><td>
+        </td><td style="font-family:arial,verdana"><a href="mailto:rcacuango@at4.net" target="_blank">rcacuango@at4.net</a>
+        </td><td>
+        </td></tr>
+        <tr>
+            <td style="font-family:arial,verdana;font-weight:bold">Phone:
+            </td><td>
+        </td><td style="font-family:arial,verdana">681362019
+        </td><td>
+        </td></tr>
+        <tr>
+            <td style="font-family:arial,verdana;font-weight:bold">Message:
+            </td><td>
+        </td><td style="font-family:arial,verdana">
+        </td><td>
+        </td></tr>
+        <tr>
+            <td style="font-family:arial,verdana;font-weight:bold">Reason:
+            </td><td>
+        </td><td style="font-family:arial,verdana">Restaurant full
+        </td><td>
+        </td></tr>
+        <tr>
+            <td style="font-family:arial,verdana;font-weight:bold">
+            </td><td>
+        </td><td style="font-family:arial,verdana">
+        </td><td>
+        </td></tr>
+
+        <td style="font-family:arial,verdana">
+
+        </td>
+        </tbody>
+    </table>
+</div></div>
+
+<form id="widgetgenerator">
+    <input type="hidden" id="apikey" value="7c7fcd47-efbc-41f8-af79-7f2b2da740c2" disabled="disabled"/>
+    <div class="form-group">
+        <label for="divid">Target element ID</label>
+        <input type="text" id="divid" value="abc-reservations-widget" />
+        <small class="form-text text-muted">ID of the element where the widget will appear.</small>
+    </div>
+    <div class="form-group">
+        <label for="style">Widget style</label>
+        <select id="style">
+            <option value="light" selected="selected">Light</option>
+            <option value="dark">Dark</option>
+        </select>
+        <small class="form-text text-muted">Style of the branding that appears below the widget.</small>
+    </div>
+    <div class="form-group">
+        <label for="debug">Debug mode</label>
+        <input type="checkbox" id="debug" />
+        <small class="form-text text-muted">Always off except for testing -- will print debug log to console and serve unminified, slow content.</small>
+    </div>
+    <div class="form-group">
+        <label for="endpoint">Endpoint</label>
+        <select id="endpoint">
+            <option value="dev">Development</option>
+            <option value="pre">Preproduction</option>
+            <option value="prod" selected="selected">Production</option>
+        </select>
+        <small class="form-text text-muted">Should be production except for testing</small>
+    </div>
+
+    <textarea id="output"></textarea>
+</form>
+
+</body>
+
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox-content">
+                <div class="form-horizontal">
+                    <h4>ReservationChannel</h4>
+                    <hr />
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-lg-10"></div>
+<div class="wrapper wrapper-content animated fadeInRight"></div>
+<script
+        src="https://code.jquery.com/jquery-3.2.1.js"
+        integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+        crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+
+    function WidgetGenerator(){
+        //debugger;
+        this.$parent = jQuery("#widgetgenerator");
+        this.$apikey = this.$parent.find("#apikey");
+        this.$divid = this.$parent.find("#divid");
+        this.$style = this.$parent.find("#style");
+        this.$debug = this.$parent.find("#debug");
+        this.$endpoint = this.$parent.find("#endpoint");
+
+        this.$output = this.$parent.find("#output");
+
+        jQuery()
+            .add(this.$apikey)
+            .add(this.$divid)
+            .add(this.$style)
+            .add(this.$debug)
+            .add(this.$endpoint)
+            .on('change keyup', this.generate.bind(this))
+        ;
+
+        this.generate();
+
+    }
+    WidgetGenerator.prototype.generate = function(){
+        var apikey = this.$apikey.val();
+        var id = this.$divid.val();
+        var style = this.$style.val();
+
+        var debug = this.$debug.prop("checked");
+        var endpoint_key = this.$endpoint.val(), endpoint;
+        switch(endpoint_key) {
+            default: endpoint = "https://api.abc-mallorca.com"; break;
+            case "pre": endpoint = "https://abcmallorcanode-devel.azurewebsites.net"; break;
+            case "dev": endpoint = "http://phpdev7.in.at4.net:8080"; break;
+        }
+
+        var params = {
+            apikey: apikey,
+            id: id,
+            style: style
+        };
+        if (debug) {
+            params.debug = "MV7L208ZH4WB";
+        }
+        var url = endpoint+"/widget/widget.js?"+jQuery.param(params);
+
+        var out = '';
+        out += '<div id="'+id+'"></div>';
+        out += '\n';
+        out += '<script src="'+url+'"><\/script>';
+
+        this.$output.val(out);
+
+    }
+    window._wg = new WidgetGenerator();
+</script>
+<script src="dist/js/app.js"></script>
+</html>
