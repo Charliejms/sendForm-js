@@ -1,2 +1,1 @@
-require("./form");
-requre("./count_word");
+//require("./form");

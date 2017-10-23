@@ -13,3 +13,7 @@ dist/js
 
 #ignore node packages
 node_modules/
+
+#windows
+bash.exe.stackdump
+*exe
